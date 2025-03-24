@@ -3411,7 +3411,9 @@ export function createPrinter(printerOptions: PrinterOptions = {}, handlers: Pri
 
     function emitFunctionDeclarationOrExpression(node: FunctionDeclaration | FunctionExpression) {
         emitDecoratorsAndModifiers(node, node.modifiers, /*allowDecorators*/ false);
-        writeKeyword("function");
+        // @ts-ignore
+        console.log(node.original?.original?.locals["param1"])
+        writeKeyword("fn");
         emit(node.asteriskToken);
         writeSpace();
         emitIdentifierName(node.name);
